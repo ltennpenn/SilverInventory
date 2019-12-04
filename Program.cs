@@ -1,20 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
-namespace Silver_Inventory
+namespace TreasureChestUI
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var item1 = new Item();
-            item1.Type = "American Silver Eagle";
-            item1.Year = "2019";
-            item1.Condition = "MS70";
-            item1.Description = "FDI";
-            item1.PurchaseDate = "201901151200";
-            item1.PurchasePrice = "45";
-            item1.NurismaticValue = "47";
-            item1.MeltValue = "17.68";
+            CreateWebHostBuilder(args).Build().Run();
         }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
     }
 }
